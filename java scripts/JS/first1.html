@@ -1,0 +1,292 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calcy">
+<div class="hero"></div>
+<div id="bx">c</div>
+<div id="bx">del</div>
+<div id="bx">%</div>
+<div id="bx">/</div>
+<br>
+<div id="bx"></div>
+
+
+    </div>
+</body>
+</html> -->
+<!-- Q1 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Operations</title>
+</head>
+<body>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <select id="operation">
+        <!-- opentions -->
+        <option value="uppercase">Convert to Uppercase</option>
+        <option value="reverse">Reverse String</option>
+        <option value="countVowels">Count Vowels</option>
+    </select>
+    <button onclick="performOperation()">Submit</button>
+    <p id="result"></p>
+
+    <script>
+        function performOperation() {
+            let str = document.getElementById("inputString").value;
+            let op = document.getElementById("operation").value;
+            let result = "";
+
+            if (op === "uppercase") {
+                result = str.toUpperCase();//convert the uppercase
+            } else if (op === "reverse") {
+                result = str.split("").reverse().join("");//convert string in reverse
+            } else if (op === "countVowels") {
+                result = str.match(/[aeiouAEIOU]/g)?.length || 0;//if vowels in string
+            }
+
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
+
+<!-- q2 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Sequence</title>
+</head>
+<body>
+    <input type="number" id="num" placeholder="Enter N">
+    <h2>enter n no of fibbonaciseries</h2>
+    <button onclick="generateFibonacci()">Generate</button>
+    <p id="output"></p>
+
+    <script>
+        function generateFibonacci() {
+            let n = document.getElementById("num").value;
+            let fib = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+            document.getElementById("output").innerText = fib.slice(0, n).join(", ");
+        }
+    </script>
+</body>
+</html>
+
+<!-- q3 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Background</title>
+</head>
+<body>
+    <select onchange="changeColor(this.value)">
+        <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="black"></option>
+    </select>
+
+    <script>
+        function changeColor(color) {
+            document.body.style.backgroundColor = color;//change the background color
+        }
+    </script>
+</body>
+</html>
+
+<!-- q4 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Hover</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: gray;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .box:hover {
+            width: 120px;
+            height: 120px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>
+
+
+<!-- q5 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stopwatch</title>
+</head>
+<body>
+    <p id="time">0</p>
+    <button onclick="start()">Start</button>
+    <button onclick="pause()">Pause</button>
+    <button onclick="reset()">Reset</button>
+
+    <script>
+        let time = 0, timer;
+        function start() {
+            if (!timer) timer = setInterval(() => document.getElementById("time").innerText = ++time, 1000);
+        }
+        function pause() {
+            clearInterval(timer);
+            timer = null;
+        }
+        function reset() {
+            pause();
+            time = 0;
+            document.getElementById("time").innerText = time;
+        }
+    </script>
+</body>
+</html>
+
+<!-- q6 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <p>What is 2+2?</p>
+    <input type="radio" name="q1" value="3">3
+    <input type="radio" name="q1" value="4">4
+    <button onclick="checkQuiz()">Submit</button>
+    <p id="score"></p>
+
+    <script>
+        function checkQuiz() {
+            let answer = document.querySelector('input[name="q1"]:checked')?.value;
+            document.getElementById("score").innerText = answer == "4" ? "Correct!" : "Wrong!";
+        }
+    </script>
+</body>
+</html>
+
+<!-- q7 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" onclick="changeText()" ondblclick="resetText()">Click me</button>
+
+<script>
+    function changeText() {
+        document.getElementById("btn").innerText = "Clicked!";
+    }
+    function resetText() {
+        document.getElementById("btn").innerText = "Click me";
+    }
+</script>
+
+</body>
+</html>
+<!-- q8 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeypress="showText(this.value)">
+<p id="display"></p>
+
+<script>
+    function showText(text) {
+        document.getElementById("display").innerText = text;
+    }
+</script>
+
+</body>
+</html>
+<!-- q9 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form oninput="validateForm()">
+        <input type="text" id="username" placeholder="Username (min 3 chars)">
+        <p id="userError"></p>
+    
+        <input type="email" id="email" placeholder="Email">
+        <p id="emailError"></p>
+    
+        <input type="password" id="password" placeholder="Password (min 6 chars)">
+        <p id="passError"></p>
+    
+        <button id="submitBtn" disabled>Submit</button>
+    </form>
+    
+    <script>
+        function validateForm() {
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let valid = true;
+    
+            document.getElementById("userError").innerText = username.length >= 3 ? "" : "Too short!";
+            document.getElementById("emailError").innerText = email.includes("@") ? "" : "Invalid email!";
+            document.getElementById("passError").innerText = password.length >= 6 ? "" : "Too weak!";
+    
+            valid = username.length >= 3 && email.includes("@") && password.length >= 6;
+            document.getElementById("submitBtn").disabled = !valid;
+        }
+    </script>
+    
+</body>
+</html>
+<!-- q10 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<input type="number" id="usd" placeholder="Enter USD">
+<button onclick="convert()">Convert</button>
+<p id="inr"></p>
+
+<script>
+    function convert() {
+        let usd = document.getElementById("usd").value;
+        document.getElementById("inr").innerText = "INR: " + (usd * 82);
+    }
+</script>
+
+</html>

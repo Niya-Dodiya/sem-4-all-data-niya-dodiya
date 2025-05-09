@@ -1,0 +1,168 @@
+	Q17 
+
+
+abstract class person{
+    // System.out.println("it is person class main class");
+}
+
+abstract class doctor extends person{
+    protected int docid;
+    protected String dname;
+ doctor(int docid,String dname){
+    this.docid=docid;
+    this.dname=dname;
+ }
+ public void providetreatment(){
+    System.out.println("the doctor \n"+dname+ " is provide treatment  and id is \n "+docid);
+ }
+}
+
+class surgeon extends doctor{
+    surgeon(int docid,String dname){
+        super(docid,dname);
+    }
+   
+    public void providetreatment(){
+        super.providetreatment();
+    }
+}
+class phys extends doctor{
+    phys(int docid,String dname){
+        super(docid,dname);
+    }
+    
+    public void providetreatment(){
+        super.providetreatment();
+    }
+}
+
+class patient extends doctor{
+    private int pid;
+    protected String pname;
+    // patient(int pid,String pname,int docid,String dname){
+    //         this.pid=pid;
+    //         this.pname=pname;
+    //         super(docid,dname);
+    //     }
+
+    patient(int docid,String dname,int pid,String pname){
+        super(docid,dname);
+        this.pid=pid;
+        this.pname=pname;
+        //super(docid,dname);
+    }
+    protected void assigndoctor(){
+        System.out.println("the patient id is "+pid+"\n the patient name is "+pname+"\n the patient assign doctor id is "+docid+"\n the doctor name it is "+dname);
+    }
+    public void recevetreatment(){
+        System.out.println("the treatment recived by "+dname);
+    }
+}
+
+class hospitalmangment{
+    public static void main(String[] args) {
+        patient p1=new patient(120, "mr.roy", 11, "mr.zala");
+        p1.assigndoctor();
+        p1.recevetreatment();
+        
+    }
+}
+
+
+Q16
+
+import java.util.Scanner;
+/*MOVI TICIKE BOOXING MANAGMENT */
+abstract class MoviTickite{
+    String moviname,theatername;
+    int numtickites;
+    double price;
+    MoviTickite(String moviname,String theatername,int numtickites,double price){
+        this.moviname=moviname;
+        this.theatername=theatername;
+        this.numtickites=numtickites;
+        this.price=price;
+    }
+     abstract void calculatetotalprice();
+    void confirmticket(){
+        System.out.println("\n THE MOVIE NAME IS --- > "+moviname+ " \n THE THEATER NAME IS --- > "+theatername+" \n NO OF TICKET BOKKING IS --- >"+numtickites+" \n THE TOTAL PRICE IS --- >"+numtickites*price);
+    }
+}
+
+class Regularticket extends MoviTickite{
+    Regularticket(String moviname,String theatername,int numtickites,double price){
+        super(moviname,theatername,numtickites,price);
+        // super.price=250;
+    }
+    public void calculatetotalprice(){
+        System.out.println("the total ammount to pay is"+numtickites*price);
+    }
+}
+
+class primium extends MoviTickite{
+    primium(String moviname,String theatername,int numtickites,double price){
+        super(moviname,theatername,numtickites,price);
+        // super.price=250;
+    }
+    public void calculatetotalprice(){
+        System.out.println("the total ammount to pay is"+numtickites*price);
+    }
+}
+
+class vip extends MoviTickite{
+    vip(String moviname,String theatername,int numtickites,double price){
+        super(moviname,theatername,numtickites,price);
+        // super.price=250;
+    }
+    public void calculatetotalprice(){
+        System.out.println("the total ammount to pay is"+numtickites*price);
+    }
+}
+
+
+public class movitickitemanagemnt {
+ public static void main(String[] args) {
+   System.out.println("-------   WELCOME TO RAJHANCE CINEMA -----------");
+    System.out.println("\n enter your choice \n 1.THE REGULAR TICKET IT IS PRICE IS RS: 250 \n 2.THE PRIMIUM TICKET IT IS 'S PRICE IS RS:300 \n 3. THE VIP TICKETS IT S PRICE IS RS:450");
+    Scanner sc = new Scanner(System.in);
+    int numtickites=89;
+    String moviname="simba";
+    String thetername = "rajhance";
+    int ch=sc.nextInt();
+    switch (ch) {
+        case 1:
+                int price=250;
+                Regularticket r1 = new Regularticket(moviname,thetername,numtickites,price);
+                r1.calculatetotalprice();
+                r1.confirmticket();
+                break;
+        case 2:
+                int price2 = 300;
+                primium p1 = new primium(moviname, thetername, numtickites, price2);
+                p1.calculatetotalprice();
+                p1.confirmticket();
+                break;
+        case 3:
+                int price3 = 450;
+                vip v1 = new vip(moviname, thetername, numtickites, price3);
+                v1.calculatetotalprice();
+                v1.confirmticket();
+                break;
+
+        default:
+        System.out.println("ENTER VALID NO");
+            break;
+    }
+    
+ }
+    
+}
+
+
+Q15
+
+
+
+
+
+

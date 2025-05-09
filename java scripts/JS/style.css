@@ -1,0 +1,21 @@
+.calcy{
+    height: 600px;
+    width: 400px;
+    display:flex;
+    align-items:center;
+    color: white;
+    text-size-adjust: 60px;
+    background-color: rgb(93, 81, 81);
+    justify-content: center;
+    margin: auto;
+    padding: auto;
+}
+
+#bx{
+height: 30px;
+width: 50px;
+border: 1px solid white;
+margin: auto;
+border-radius: 50%;
+text-align: center;
+}

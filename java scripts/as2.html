@@ -1,0 +1,467 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string operations</title>
+</head>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <br>
+    <h2>roll no : 2199</h2>
+    <br>
+    <h2>fa2</h2>
+    <h2>String convertion</h2>
+    <h2>
+    <input type="text" id ="demo" placeholder="enter the string">
+    <select id="operation">
+        <option value="uppercase">conver to uppercase</option>
+        <option value="reverse-string">conver to reverse string</option>
+        <option value="countvowel">count the vowels</option>
+    </select>
+    <button onclick="performoperation()">submite</button>
+    <p id="result"></p>
+    </h2>
+</body>
+<script>
+    function performoperation(){
+        let input = document.getElementById("demo").value;
+        let operation = document.getElementById("operation").value;
+        let result=" ";
+        if(operation ==="uppercase"){
+            result=input.toUpperCase();
+        }
+        else if(operation === "reverse-string"){
+            result=input.split("").reverse().join("");
+        }
+        else if(operation === "countvowel"){
+            let count=(input.match(/[aeiouAEIOU]/g)||[]).length;
+            result=`number of vowels : ${count}`;
+        }
+       document.getElementById("result").innerText=result;
+    }
+</script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fibonacci sequnce</title>
+</head>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <br>
+    <h2>roll no : 2199</h2>
+    <br>
+    <h2>fa2</h2>
+    <h2>fibonnacci series</h2>
+    <h2>
+    <input type="number" id ="demo" placeholder="enter the string">
+    <button onclick="fibo()">submit</button>
+    <p id="result"></p>  
+</body>
+<script>
+    function fibo(){
+        let n=document.getElementById("demo").value;
+        let fib=[0,1];
+        let i;
+        for(i=2;i<n;i++){
+            fib[i]=fib[i-1]+fib[i-2];
+        }
+        document.getElementById("result").innerText=fib.slice(0,n).join(",");
+    }
+</script>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change background color</title>
+</head>
+<style>
+</style>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <br>
+    <h2>roll no : 2199</h2>
+    <br>
+    <h2>fa2</h2>
+    <h2>change background color</h2>
+    <select id="dropdown" onchange="changecolor()">
+    <option value="white">white</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+    <option value="purple">purple</option>
+    <option value="red">red</option>
+
+    </select>
+
+</body>
+<script>
+    function changecolor(){
+        let color=document.getElementById("dropdown").value;
+        document.body.style.backgroundColor=color;
+    }
+</script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        color: aliceblue;
+        background-color: brown;
+        /* border: 2ph; */
+        width: 50vh;
+        height: 10vh;
+        display: inline-block;
+        margin: 10px;
+        transition: all 0.3s;
+    }
+    .box:hover{
+        border-color: black;
+        background-color: aqua;
+        color: blue;
+        border: 5px solid blue;
+        text-align: center;
+    }
+</style>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <h2>roll no : 2199</h2>
+    <h2>fa2</h2>
+    <h2>4.hovereffect on boxes</h2>
+    <div class="box">box1</div>
+    <div class="box">box2</div>
+    <div class="box">box3</div>
+    <div class="box">box4</div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopwatch</title>
+</head>
+<style>
+    button{
+        height: 50px;
+        width: 78px;
+        color: black;
+        background-color: beige;
+        /* align-items: center; */
+        text-align: center;
+
+    }
+</style>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <h2>roll no : 2199</h2>
+    <h2>fa2</h2>
+    <h2>stopwatch</h2>
+    <p id="timmer">0</p>
+    <button id="start">start</button>
+    <button id="reset">reset</button>
+    <button id="pause">pause</button>
+
+</body>
+<script>
+    let time=0,interval;
+    let isrunning=false;
+    document.getElementById("start").addEventListener("click",function(){
+        if(!isrunning){
+            isrunning=true;
+            interval=setInterval(()=> {
+                time++;
+                document.getElementById("timmer").innerText=time;
+            },1000);
+        }
+    });
+    document.getElementById("reset").addEventListener("click",function(){
+        clearInterval(interval);
+        time=0;
+        isrunning=false;
+        document.getElementById("timmer").innerText=0;
+
+    });
+    document.getElementById("pause").addEventListener("click",function(){
+        clearInterval(interval);
+        isrunning=false;
+        // document.getElementById("timmer").innerText=0;
+
+    });
+</script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz game</title>
+</head>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <h2>roll no : 2199</h2>
+    <h2>fa2</h2>
+    <h2>quiz game</h2>
+    <form id="quizform">
+    <p >what is 2+2+2 ?</p>
+    <input type="radio" name="q1" value="4">4
+    <input type="radio" name="q1" value="5">5
+    <input type="radio" name="q1" value="6">6
+    <button type="button" onclick="checkanswer()">check</button>
+</form>
+<p id="score"></p>
+</body>
+<script>
+    function checkanswer(){
+        let answer=document.querySelector('input[name="q1"]:checked');
+        let score= answer && answer.value == "6" ? "Correct Answer !" : "Wrong Answer";
+
+        document.getElementById("score").innerText=score;
+    }
+</script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.button click event</title>
+</head>
+<style>
+    button{
+        height: 50px;
+        width: 78px;
+        color: black;
+        background-color: beige;
+        /* align-items: center; */
+        text-align: center;
+
+    }
+</style>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <h2>roll no : 2199</h2>
+    <h2>fa2</h2>
+    <h2>button click events single click and double click</h2>
+    <button id="btn">click me!</button>
+
+</body>
+<script>
+    let btn=document.getElementById("btn");
+    btn,addEventListener("click", () =>  
+    btn.innerText="single clicked");
+    btn,addEventListener("dblclick", () =>  
+    btn.innerText="double clicked");
+
+</script>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typing input display</title>
+</head>
+<body>
+    <h2>Name : niya dodiya</h2>
+    <h2>roll no : 2199</h2>
+    <h2>fa2</h2>
+    <h2>8.typing input display</h2>
+    <input type="text"  id="demoinput">
+    <p id="displaycontent"></p>
+</body>
+<script>
+    document.getElementById("demoinput").addEventListener("keypress",function(){
+
+        document.getElementById("displaycontent").innerText=this.value;
+    });
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation with classList</title>
+<style>
+body {
+    color: #ffe6e6;
+    text-align: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+background-color: rgb(31, 29, 29);
+}
+.input-field {
+width: 250px;
+padding: 8px;
+margin: 5px;
+border: 2px solid gray;
+border-radius: 5px;
+display: block;
+align-items: center;
+display: flex;
+flex-wrap: wrap;
+}
+.error {
+border-color: red;
+background-color: #ffe6e6;
+}
+.success {
+border-color: green;
+background-color: #e6ffe6;
+}
+.error-message {
+color: red;
+font-size: 14px;
+margin: 5px 0;
+}
+.container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 45vh; /* Full viewport height */
+        }
+</style>
+</head>
+<body>
+<!-- <h2>Name : niya dodiya</h2>
+<h2>roll no : 2199</h2>
+<h2>fa2</h2>
+<h2>Register Form</h2> -->
+<form id="myForm">
+<div class="container">
+<input type="text" class="input-field" id="name"
+placeholder="Enter your name">
+<p id="nameError" class="error-message"></p>
+<input type="email" class="input-field" id="email"
+placeholder="Enter your email">
+<p id="emailError" class="error-message"></p>
+<input type="password" class="input-field" id="password"
+placeholder="Enter your password">
+<p id="passwordError" class="error-message"></p>
+<button type="submit">Submit</button>
+</div>
+</form>
+<p id="message"></p>
+<script>
+let form = document.getElementById("myForm");
+form.addEventListener("submit", function(event) {
+event.preventDefault(); // Prevent form submission
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let password = document.getElementById("password");
+let nameError = document.getElementById("nameError");
+let emailError = document.getElementById("emailError");
+let passwordError = document.getElementById("passwordError");
+let isValid = true;
+localStorage.setItem("name",name.value);
+localStorage.setItem("email",email.value);
+localStorage.setItem("password",password.value);
+
+// Validate Name
+if (name.value.trim() === "") {
+name.classList.add("error");
+name.classList.remove("success");
+nameError.textContent = "Name is required!";
+isValid = false;
+} else {
+name.classList.add("success");
+name.classList.remove("error");
+nameError.textContent = "";
+}
+// Validate Email
+if (email.value.trim() === "") {
+email.classList.add("error");
+email.classList.remove("success");
+emailError.textContent = "Email is required!";
+isValid = false;
+} else if (!email.value.includes("@")) {
+email.classList.add("error");
+email.classList.remove("success");
+emailError.textContent = "Enter a valid email!";
+isValid = false;
+} else {
+email.classList.add("success");
+
+email.classList.remove("error");
+emailError.textContent = "";
+}
+// Validate Password
+if (password.value.trim() === "" || 
+password.value.length < 6) {
+password.classList.add("error");
+password.classList.remove("success");
+passwordError.textContent = "Password must be at least 6 characters!";
+isValid = false;
+} else {
+password.classList.add("success");
+password.classList.remove("error");
+passwordError.textContent = "";
+}
+// Display message
+let message = document.getElementById("message");
+if (isValid) {
+message.innerHTML = "Form submitted ,successfully!";
+message.style.color = "green";
+} else {
+message.innerHTML = "Please fix the errors!";
+message.style.color = "red";
+}
+});
+</script>
+</body>
+</html>
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>corrency converter</title>
+</head>
+<style>
+    button{
+        height: 50px;
+        width: 78px;
+        color: black;
+        background-color: beige;
+        /* align-items: center; */
+        text-align: center;
+
+    }
+</style>
+
+<body>
+    <h2>Name : niya dodiya</h2>
+    <h2>roll no : 2199</h2>
+    <h2>fa2</h2>
+    <h2>currency converter</h2>
+    <input type="number" name="" id="usd" placeholder="enter the ruppees">
+    <button onclick="converttodollor()">convert</button>
+    <p id="result"></p>
+</body>
+<script>
+    function converttodollor(){
+        let usd=parseFloat(document.getElementById("usd").value);
+        document.getElementById("result").innerText="INR  :  "+ (usd * 82);
+    }
+</script>
+</html> -->

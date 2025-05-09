@@ -1,0 +1,1594 @@
+/*JAVA USING CREATE FILE AND WRIITING IN THE FILE HANDALING*/
+
+// package Mypackge.filewrittedemo;
+// import java.io.*;
+// import java.util.Scanner;
+// public class demob {
+//     public static void main(String[] args) {
+    
+        //create file using file keyword
+
+        /*File file = new File("hello.txt");
+        try{
+            file.createNewFile();
+        }
+        catch(Exception e){
+            System.out.println("enable to craete new file");
+            e.printStackTrace();
+        }*/
+
+        //write the data in the file
+        /*try{
+            FileWriter fw = new FileWriter("filewrittedemo.txt");
+            fw.write("hello it is first python filewritting demo");
+            fw.close();
+        }catch(Exception e){
+            System.out.println("Error is"+e);
+
+        }
+        System.out.println("Sucesfull");*/
+// read the data in the file
+
+/*File file = new File("hello.txt");
+        try{
+            Scanner sc=new Scanner(file);
+            while(sc.hasNextLine()){
+                String line = sc.nextLine();
+                System.out.println(line);
+            }
+            sc.close();
+        }catch(Exception r){
+            System.out.println(r);
+        }
+        System.out.println("file read sucesfully");
+*/
+
+//remove file in the browser/deleted file in the data
+/*File file = new File("hello.txt");
+if(file.exists()){
+try{
+   if(file.delete()){
+    System.out.println("file is deleted => "  +file.getName());
+    System.out.println("file delete sucesfully");
+    }
+}catch(Exception r){
+    System.out.println(r);
+}
+}
+else{
+    System.out.println("file not found");
+}
+
+
+    }
+}*/
+
+
+it is all my 12 program using awt and i give code combine it in one program code is here
+
+// 1. Login Form
+import java.awt.*;
+import java.awt.event.*;
+
+class LoginFormAWT extends Frame {
+    LoginFormAWT() {
+        setTitle("Login Form");
+        setLayout(null);
+
+        Label l1 = new Label("Username");
+        l1.setBounds(50, 60, 80, 30);
+        TextField user = new TextField();
+        user.setBounds(150, 60, 150, 30);
+
+        Label l2 = new Label("Password");
+        l2.setBounds(50, 110, 80, 30);
+        TextField pass = new TextField();
+        pass.setEchoChar('*');
+        pass.setBounds(150, 110, 150, 30);
+
+        Button login = new Button("Login");
+        login.setBounds(100, 180, 80, 30);
+        login.addActionListener(e -> {
+            String u = user.getText();
+            String p = pass.getText();
+            String msg = (u.equals("admin") && p.equals("1234")) ? "Login Successful" : "Login Failed";
+            showDialog(msg);
+        });
+
+        add(l1); add(user); add(l2); add(pass); add(login);
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    void showDialog(String msg) {
+        Dialog d = new Dialog(this, "Message", true);
+        d.setLayout(new FlowLayout());
+        d.add(new Label(msg));
+        Button ok = new Button("OK");
+        ok.addActionListener(e -> d.setVisible(false));
+        d.add(ok);
+        d.setSize(200, 100);
+        d.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new LoginFormAWT();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class CalculatorAWT extends Frame implements ActionListener {
+    TextField tf1, tf2, tf3;
+    Button add, sub, mul, div;
+
+    public CalculatorAWT() {
+        setTitle("Simple AWT Calculator");
+        setLayout(new FlowLayout());
+
+        // Creating text fields for input
+        tf1 = new TextField(10);
+        tf2 = new TextField(10);
+        tf3 = new TextField(20);
+        tf3.setEditable(false); // Output field
+
+        // Creating operation buttons
+        add = new Button("+");
+        sub = new Button("-");
+        mul = new Button("*");
+        div = new Button("/");
+
+        // Adding components to frame
+        add(new Label("First Number:"));
+        add(tf1);
+        add(new Label("Second Number:"));
+        add(tf2);
+        add(add);
+        add(sub);
+        add(mul);
+        add(div);
+        add(new Label("Result:"));
+        add(tf3);
+
+        // Adding listeners
+        add.addActionListener(this);
+        sub.addActionListener(this);
+        mul.addActionListener(this);
+        div.addActionListener(this);
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            int a = Integer.parseInt(tf1.getText());
+            int b = Integer.parseInt(tf2.getText());
+            String op = e.getActionCommand();
+            int result = 0;
+
+            switch (op) {
+                case "+": result = a + b; break;
+                case "-": result = a - b; break;
+                case "*": result = a * b; break;
+                case "/":
+                    if (b != 0) result = a / b;
+                    else {
+                        tf3.setText("Cannot divide by 0");
+                        return;
+                    }
+                    break;
+            }
+            tf3.setText(String.valueOf(result));
+        } catch (Exception ex) {
+            tf3.setText("Invalid Input");
+        }
+    }
+
+    public static void main(String[] args) {
+        new CalculatorAWT();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ATMProgram extends Frame {
+    Label label;
+    TextField pinField;
+    Button checkPin, cancel;
+
+    public ATMProgram() {
+        setTitle("ATM Pin Verification");
+        setLayout(new FlowLayout());
+
+        // Label for PIN input
+        label = new Label("Enter PIN: ");
+        pinField = new TextField(4);
+        pinField.setEchoChar('*'); // Mask the PIN
+
+        // Buttons for check and cancel actions
+        checkPin = new Button("Check PIN");
+        cancel = new Button("Cancel");
+
+        // Adding components to frame
+        add(label);
+        add(pinField);
+        add(checkPin);
+        add(cancel);
+
+        // Button event handling
+        checkPin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String pin = pinField.getText();
+                if (pin.equals("1234")) {
+                    showDialog("PIN Verified! Access Granted.");
+                } else {
+                    showDialog("Incorrect PIN! Access Denied.");
+                }
+            }
+        });
+
+        cancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                pinField.setText(""); // Clear input
+                showDialog("Process Cancelled.");
+            }
+        });
+
+        setSize(300, 150);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ATMProgram();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class VotingEligibility extends Frame {
+    Label ageLabel;
+    TextField ageField;
+    Button checkEligibility, cancel;
+
+    public VotingEligibility() {
+        setTitle("Voting Eligibility");
+        setLayout(new FlowLayout());
+
+        // Label for Age input
+        ageLabel = new Label("Enter Age: ");
+        ageField = new TextField(3);
+
+        // Buttons for checking and cancel actions
+        checkEligibility = new Button("Check Eligibility");
+        cancel = new Button("Cancel");
+
+        // Adding components to frame
+        add(ageLabel);
+        add(ageField);
+        add(checkEligibility);
+        add(cancel);
+
+        // Button event handling for eligibility
+        checkEligibility.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int age = Integer.parseInt(ageField.getText());
+                    if (age >= 18) {
+                        showDialog("Eligible to Vote!");
+                    } else {
+                        showDialog("Not Eligible to Vote!");
+                    }
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter a valid age.");
+                }
+            }
+        });
+
+        // Button event handling for cancel
+        cancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ageField.setText(""); // Clear the input field
+                showDialog("Process Cancelled.");
+            }
+        });
+
+        setSize(300, 150);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new VotingEligibility();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class BMICalculator extends Frame {
+    Label weightLabel, heightLabel, resultLabel;
+    TextField weightField, heightField, resultField;
+    Button calculateButton;
+
+    public BMICalculator() {
+        setTitle("BMI Calculator");
+        setLayout(new FlowLayout());
+
+        // Creating labels and text fields
+        weightLabel = new Label("Enter Weight (kg): ");
+        heightLabel = new Label("Enter Height (m): ");
+        resultLabel = new Label("Your BMI: ");
+        
+        weightField = new TextField(5);
+        heightField = new TextField(5);
+        resultField = new TextField(10);
+        resultField.setEditable(false); // Making result field non-editable
+
+        calculateButton = new Button("Calculate BMI");
+
+        // Adding components to the frame
+        add(weightLabel); add(weightField);
+        add(heightLabel); add(heightField);
+        add(calculateButton);
+        add(resultLabel); add(resultField);
+
+        // Button event handling for calculating BMI
+        calculateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double weight = Double.parseDouble(weightField.getText());
+                    double height = Double.parseDouble(heightField.getText());
+
+                    // BMI Formula: BMI = weight (kg) / height^2 (m^2)
+                    double bmi = weight / (height * height);
+                    resultField.setText(String.format("%.2f", bmi));
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid values.");
+                }
+            }
+        });
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new BMICalculator();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class LoanEligibility extends Frame {
+    Label incomeLabel, creditLabel, resultLabel;
+    TextField incomeField, creditField, resultField;
+    Button checkButton;
+
+    public LoanEligibility() {
+        setTitle("Loan Eligibility");
+        setLayout(new FlowLayout());
+
+        // Creating labels and text fields
+        incomeLabel = new Label("Enter Income: ");
+        creditLabel = new Label("Enter Credit Score: ");
+        resultLabel = new Label("Eligibility Status: ");
+        
+        incomeField = new TextField(10);
+        creditField = new TextField(10);
+        resultField = new TextField(20);
+        resultField.setEditable(false); // Making result field non-editable
+
+        checkButton = new Button("Check Eligibility");
+
+        // Adding components to the frame
+        add(incomeLabel); add(incomeField);
+        add(creditLabel); add(creditField);
+        add(checkButton);
+        add(resultLabel); add(resultField);
+
+        // Button event handling for checking loan eligibility
+        checkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double income = Double.parseDouble(incomeField.getText());
+                    int creditScore = Integer.parseInt(creditField.getText());
+
+                    // Loan Eligibility Criteria
+                    String result = (income >= 30000 && creditScore >= 650) ? "Eligible" : "Not Eligible";
+                    resultField.setText(result);
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid values.");
+                }
+            }
+        });
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new LoanEligibility();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class LibraryMembership extends Frame {
+    Label nameLabel, ageLabel, memberLabel;
+    TextField nameField, ageField;
+    Button checkButton;
+    TextArea resultArea;
+
+    public LibraryMembership() {
+        setTitle("Library Membership");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text fields, and text area
+        nameLabel = new Label("Enter Name: ");
+        ageLabel = new Label("Enter Age: ");
+        memberLabel = new Label("Eligibility Status: ");
+
+        nameField = new TextField(20);
+        ageField = new TextField(3);
+
+        resultArea = new TextArea(3, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        checkButton = new Button("Check Membership");
+
+        // Adding components to the frame
+        add(nameLabel); add(nameField);
+        add(ageLabel); add(ageField);
+        add(checkButton); add(memberLabel);
+        add(resultArea);
+
+        // Button event handling to check eligibility
+        checkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int age = Integer.parseInt(ageField.getText());
+
+                    // Library Membership eligibility criteria
+                    if (age >= 18) {
+                        resultArea.setText("Eligible for Membership.");
+                    } else {
+                        resultArea.setText("Not Eligible for Membership.");
+                    }
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid age.");
+                }
+            }
+        });
+
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new LibraryMembership();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ReverseStudentNames extends Frame {
+    Label nameLabel, resultLabel;
+    TextField nameField;
+    TextArea resultArea;
+    Button reverseButton;
+
+    public ReverseStudentNames() {
+        setTitle("Reverse Student Names");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text fields, and text area
+        nameLabel = new Label("Enter Student Name: ");
+        resultLabel = new Label("Reversed Name: ");
+        nameField = new TextField(20);
+        resultArea = new TextArea(3, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        reverseButton = new Button("Reverse Name");
+
+        // Adding components to the frame
+        add(nameLabel); add(nameField);
+        add(reverseButton); add(resultLabel);
+        add(resultArea);
+
+        // Button event handling to reverse name
+        reverseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String reversedName = new StringBuilder(name).reverse().toString();
+                resultArea.setText(reversedName);
+            }
+        });
+
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ReverseStudentNames();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ParagraphOperations extends Frame {
+    Label inputLabel, resultLabel;
+    TextArea inputArea, resultArea;
+    Button processButton;
+
+    public ParagraphOperations() {
+        setTitle("Paragraph Operations");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text areas, and button
+        inputLabel = new Label("Enter Paragraph: ");
+        resultLabel = new Label("Result: ");
+        inputArea = new TextArea(5, 30);
+        resultArea = new TextArea(5, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        processButton = new Button("Process Paragraph");
+
+        // Adding components to the frame
+        add(inputLabel); add(inputArea);
+        add(processButton); add(resultLabel); add(resultArea);
+
+        // Button event handling for paragraph operations
+        processButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String paragraph = inputArea.getText();
+                int wordCount = paragraph.split("\\s+").length;
+                int charCount = paragraph.length();
+                String reversedParagraph = new StringBuilder(paragraph).reverse().toString();
+
+                String result = "Words: " + wordCount + "\nCharacters: " + charCount + "\nReversed: " + reversedParagraph;
+                resultArea.setText(result);
+            }
+        });
+
+        setSize(400, 400);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ParagraphOperations();
+    }
+}
+
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ElectricityBillAWT extends Frame {
+    Label unitLabel, resultLabel;
+    TextField unitField;
+    TextArea resultArea;
+    Button calculateButton;
+
+    public ElectricityBillAWT() {
+        setTitle("Electricity Bill Calculator");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text fields, and text area
+        unitLabel = new Label("Enter Units Consumed: ");
+        resultLabel = new Label("Bill Amount: ");
+        unitField = new TextField(10);
+        resultArea = new TextArea(2, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        calculateButton = new Button("Calculate Bill");
+
+        // Adding components to the frame
+        add(unitLabel); add(unitField);
+        add(calculateButton); add(resultLabel); add(resultArea);
+
+        // Button event handling to calculate electricity bill
+        calculateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int units = Integer.parseInt(unitField.getText());
+                    double billAmount = 0;
+
+                    if (units <= 100) {
+                        billAmount = units * 2;
+                    } else if (units <= 200) {
+                        billAmount = 100 * 2 + (units - 100) * 3;
+                    } else {
+                        billAmount = 100 * 2 + 100 * 3 + (units - 200) * 5;
+                    }
+
+                    resultArea.setText("Bill: " + billAmount + " INR");
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid units.");
+                }
+            }
+        });
+
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ElectricityBillAWT();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class MouseColorChanger extends Frame {
+    Button colorButton;
+
+    public MouseColorChanger() {
+        setTitle("Mouse Color Changer");
+        setLayout(new FlowLayout());
+
+        colorButton = new Button("Hover over me to change color");
+
+        // MouseListener to change button color on mouse hover
+        colorButton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                colorButton.setBackground(Color.GREEN);
+            }
+
+            public void mouseExited(MouseEvent e) {
+                colorButton.setBackground(Color.RED);
+            }
+        });
+
+        add(colorButton);
+        setSize(400, 200);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new MouseColorChanger();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class PowerCalculator extends Frame {
+    Label baseLabel, exponentLabel, resultLabel;
+    TextField baseField, exponentField, resultField;
+    Button calculateButton;
+
+    public PowerCalculator() {
+        setTitle("Power Calculator");
+        setLayout(new FlowLayout());
+
+        baseLabel = new Label("Enter Base: ");
+        exponentLabel = new Label("Enter Exponent: ");
+        resultLabel = new Label("Result: ");
+        
+        baseField = new TextField(10);
+        exponentField = new TextField(10);
+        resultField = new TextField(20);
+        resultField.setEditable(false);
+
+        calculateButton = new Button("Calculate Power");
+
+        add(baseLabel); add(baseField);
+        add(exponentLabel); add(exponentField);
+        add(calculateButton); add(resultLabel); add(resultField);
+
+        calculateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double base = Double.parseDouble(baseField.getText());
+                    int exponent = Integer.parseInt(exponentField.getText());
+                    double result = Math.pow(base, exponent);
+                    resultField.setText(String.valueOf(result));
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid values.");
+                }
+            }
+        });
+
+        setSize(400, 200);
+        setVisible(true);
+    }
+
+    void showDialog(String msg) {
+        Dialog d = new Dialog(this, "Message", true);
+        d.setLayout(new FlowLayout());
+        d.add(new Label(msg));
+        Button ok = new Button("OK");
+        ok.addActionListener(e -> d.setVisible(false));
+        d.add(ok);
+        d.setSize(200, 100);
+        d.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new PowerCalculator();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ it is all my 12 program using awt and i give code combine it in one program code is here
+
+// 1. Login Form
+import java.awt.*;
+import java.awt.event.*;
+
+class LoginFormAWT extends Frame {
+    LoginFormAWT() {
+        setTitle("Login Form");
+        setLayout(null);
+
+        Label l1 = new Label("Username");
+        l1.setBounds(50, 60, 80, 30);
+        TextField user = new TextField();
+        user.setBounds(150, 60, 150, 30);
+
+        Label l2 = new Label("Password");
+        l2.setBounds(50, 110, 80, 30);
+        TextField pass = new TextField();
+        pass.setEchoChar('*');
+        pass.setBounds(150, 110, 150, 30);
+
+        Button login = new Button("Login");
+        login.setBounds(100, 180, 80, 30);
+        login.addActionListener(e -> {
+            String u = user.getText();
+            String p = pass.getText();
+            String msg = (u.equals("admin") && p.equals("1234")) ? "Login Successful" : "Login Failed";
+            showDialog(msg);
+        });
+
+        add(l1); add(user); add(l2); add(pass); add(login);
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    void showDialog(String msg) {
+        Dialog d = new Dialog(this, "Message", true);
+        d.setLayout(new FlowLayout());
+        d.add(new Label(msg));
+        Button ok = new Button("OK");
+        ok.addActionListener(e -> d.setVisible(false));
+        d.add(ok);
+        d.setSize(200, 100);
+        d.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new LoginFormAWT();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class CalculatorAWT extends Frame implements ActionListener {
+    TextField tf1, tf2, tf3;
+    Button add, sub, mul, div;
+
+    public CalculatorAWT() {
+        setTitle("Simple AWT Calculator");
+        setLayout(new FlowLayout());
+
+        // Creating text fields for input
+        tf1 = new TextField(10);
+        tf2 = new TextField(10);
+        tf3 = new TextField(20);
+        tf3.setEditable(false); // Output field
+
+        // Creating operation buttons
+        add = new Button("+");
+        sub = new Button("-");
+        mul = new Button("*");
+        div = new Button("/");
+
+        // Adding components to frame
+        add(new Label("First Number:"));
+        add(tf1);
+        add(new Label("Second Number:"));
+        add(tf2);
+        add(add);
+        add(sub);
+        add(mul);
+        add(div);
+        add(new Label("Result:"));
+        add(tf3);
+
+        // Adding listeners
+        add.addActionListener(this);
+        sub.addActionListener(this);
+        mul.addActionListener(this);
+        div.addActionListener(this);
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            int a = Integer.parseInt(tf1.getText());
+            int b = Integer.parseInt(tf2.getText());
+            String op = e.getActionCommand();
+            int result = 0;
+
+            switch (op) {
+                case "+": result = a + b; break;
+                case "-": result = a - b; break;
+                case "*": result = a * b; break;
+                case "/":
+                    if (b != 0) result = a / b;
+                    else {
+                        tf3.setText("Cannot divide by 0");
+                        return;
+                    }
+                    break;
+            }
+            tf3.setText(String.valueOf(result));
+        } catch (Exception ex) {
+            tf3.setText("Invalid Input");
+        }
+    }
+
+    public static void main(String[] args) {
+        new CalculatorAWT();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ATMProgram extends Frame {
+    Label label;
+    TextField pinField;
+    Button checkPin, cancel;
+
+    public ATMProgram() {
+        setTitle("ATM Pin Verification");
+        setLayout(new FlowLayout());
+
+        // Label for PIN input
+        label = new Label("Enter PIN: ");
+        pinField = new TextField(4);
+        pinField.setEchoChar('*'); // Mask the PIN
+
+        // Buttons for check and cancel actions
+        checkPin = new Button("Check PIN");
+        cancel = new Button("Cancel");
+
+        // Adding components to frame
+        add(label);
+        add(pinField);
+        add(checkPin);
+        add(cancel);
+
+        // Button event handling
+        checkPin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String pin = pinField.getText();
+                if (pin.equals("1234")) {
+                    showDialog("PIN Verified! Access Granted.");
+                } else {
+                    showDialog("Incorrect PIN! Access Denied.");
+                }
+            }
+        });
+
+        cancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                pinField.setText(""); // Clear input
+                showDialog("Process Cancelled.");
+            }
+        });
+
+        setSize(300, 150);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ATMProgram();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class VotingEligibility extends Frame {
+    Label ageLabel;
+    TextField ageField;
+    Button checkEligibility, cancel;
+
+    public VotingEligibility() {
+        setTitle("Voting Eligibility");
+        setLayout(new FlowLayout());
+
+        // Label for Age input
+        ageLabel = new Label("Enter Age: ");
+        ageField = new TextField(3);
+
+        // Buttons for checking and cancel actions
+        checkEligibility = new Button("Check Eligibility");
+        cancel = new Button("Cancel");
+
+        // Adding components to frame
+        add(ageLabel);
+        add(ageField);
+        add(checkEligibility);
+        add(cancel);
+
+        // Button event handling for eligibility
+        checkEligibility.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int age = Integer.parseInt(ageField.getText());
+                    if (age >= 18) {
+                        showDialog("Eligible to Vote!");
+                    } else {
+                        showDialog("Not Eligible to Vote!");
+                    }
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter a valid age.");
+                }
+            }
+        });
+
+        // Button event handling for cancel
+        cancel.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ageField.setText(""); // Clear the input field
+                showDialog("Process Cancelled.");
+            }
+        });
+
+        setSize(300, 150);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new VotingEligibility();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class BMICalculator extends Frame {
+    Label weightLabel, heightLabel, resultLabel;
+    TextField weightField, heightField, resultField;
+    Button calculateButton;
+
+    public BMICalculator() {
+        setTitle("BMI Calculator");
+        setLayout(new FlowLayout());
+
+        // Creating labels and text fields
+        weightLabel = new Label("Enter Weight (kg): ");
+        heightLabel = new Label("Enter Height (m): ");
+        resultLabel = new Label("Your BMI: ");
+        
+        weightField = new TextField(5);
+        heightField = new TextField(5);
+        resultField = new TextField(10);
+        resultField.setEditable(false); // Making result field non-editable
+
+        calculateButton = new Button("Calculate BMI");
+
+        // Adding components to the frame
+        add(weightLabel); add(weightField);
+        add(heightLabel); add(heightField);
+        add(calculateButton);
+        add(resultLabel); add(resultField);
+
+        // Button event handling for calculating BMI
+        calculateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double weight = Double.parseDouble(weightField.getText());
+                    double height = Double.parseDouble(heightField.getText());
+
+                    // BMI Formula: BMI = weight (kg) / height^2 (m^2)
+                    double bmi = weight / (height * height);
+                    resultField.setText(String.format("%.2f", bmi));
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid values.");
+                }
+            }
+        });
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new BMICalculator();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class LoanEligibility extends Frame {
+    Label incomeLabel, creditLabel, resultLabel;
+    TextField incomeField, creditField, resultField;
+    Button checkButton;
+
+    public LoanEligibility() {
+        setTitle("Loan Eligibility");
+        setLayout(new FlowLayout());
+
+        // Creating labels and text fields
+        incomeLabel = new Label("Enter Income: ");
+        creditLabel = new Label("Enter Credit Score: ");
+        resultLabel = new Label("Eligibility Status: ");
+        
+        incomeField = new TextField(10);
+        creditField = new TextField(10);
+        resultField = new TextField(20);
+        resultField.setEditable(false); // Making result field non-editable
+
+        checkButton = new Button("Check Eligibility");
+
+        // Adding components to the frame
+        add(incomeLabel); add(incomeField);
+        add(creditLabel); add(creditField);
+        add(checkButton);
+        add(resultLabel); add(resultField);
+
+        // Button event handling for checking loan eligibility
+        checkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double income = Double.parseDouble(incomeField.getText());
+                    int creditScore = Integer.parseInt(creditField.getText());
+
+                    // Loan Eligibility Criteria
+                    String result = (income >= 30000 && creditScore >= 650) ? "Eligible" : "Not Eligible";
+                    resultField.setText(result);
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid values.");
+                }
+            }
+        });
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new LoanEligibility();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class LibraryMembership extends Frame {
+    Label nameLabel, ageLabel, memberLabel;
+    TextField nameField, ageField;
+    Button checkButton;
+    TextArea resultArea;
+
+    public LibraryMembership() {
+        setTitle("Library Membership");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text fields, and text area
+        nameLabel = new Label("Enter Name: ");
+        ageLabel = new Label("Enter Age: ");
+        memberLabel = new Label("Eligibility Status: ");
+
+        nameField = new TextField(20);
+        ageField = new TextField(3);
+
+        resultArea = new TextArea(3, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        checkButton = new Button("Check Membership");
+
+        // Adding components to the frame
+        add(nameLabel); add(nameField);
+        add(ageLabel); add(ageField);
+        add(checkButton); add(memberLabel);
+        add(resultArea);
+
+        // Button event handling to check eligibility
+        checkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int age = Integer.parseInt(ageField.getText());
+
+                    // Library Membership eligibility criteria
+                    if (age >= 18) {
+                        resultArea.setText("Eligible for Membership.");
+                    } else {
+                        resultArea.setText("Not Eligible for Membership.");
+                    }
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid age.");
+                }
+            }
+        });
+
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new LibraryMembership();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ReverseStudentNames extends Frame {
+    Label nameLabel, resultLabel;
+    TextField nameField;
+    TextArea resultArea;
+    Button reverseButton;
+
+    public ReverseStudentNames() {
+        setTitle("Reverse Student Names");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text fields, and text area
+        nameLabel = new Label("Enter Student Name: ");
+        resultLabel = new Label("Reversed Name: ");
+        nameField = new TextField(20);
+        resultArea = new TextArea(3, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        reverseButton = new Button("Reverse Name");
+
+        // Adding components to the frame
+        add(nameLabel); add(nameField);
+        add(reverseButton); add(resultLabel);
+        add(resultArea);
+
+        // Button event handling to reverse name
+        reverseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String reversedName = new StringBuilder(name).reverse().toString();
+                resultArea.setText(reversedName);
+            }
+        });
+
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ReverseStudentNames();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ParagraphOperations extends Frame {
+    Label inputLabel, resultLabel;
+    TextArea inputArea, resultArea;
+    Button processButton;
+
+    public ParagraphOperations() {
+        setTitle("Paragraph Operations");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text areas, and button
+        inputLabel = new Label("Enter Paragraph: ");
+        resultLabel = new Label("Result: ");
+        inputArea = new TextArea(5, 30);
+        resultArea = new TextArea(5, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        processButton = new Button("Process Paragraph");
+
+        // Adding components to the frame
+        add(inputLabel); add(inputArea);
+        add(processButton); add(resultLabel); add(resultArea);
+
+        // Button event handling for paragraph operations
+        processButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String paragraph = inputArea.getText();
+                int wordCount = paragraph.split("\\s+").length;
+                int charCount = paragraph.length();
+                String reversedParagraph = new StringBuilder(paragraph).reverse().toString();
+
+                String result = "Words: " + wordCount + "\nCharacters: " + charCount + "\nReversed: " + reversedParagraph;
+                resultArea.setText(result);
+            }
+        });
+
+        setSize(400, 400);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ParagraphOperations();
+    }
+}
+
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class ElectricityBillAWT extends Frame {
+    Label unitLabel, resultLabel;
+    TextField unitField;
+    TextArea resultArea;
+    Button calculateButton;
+
+    public ElectricityBillAWT() {
+        setTitle("Electricity Bill Calculator");
+        setLayout(new FlowLayout());
+
+        // Creating labels, text fields, and text area
+        unitLabel = new Label("Enter Units Consumed: ");
+        resultLabel = new Label("Bill Amount: ");
+        unitField = new TextField(10);
+        resultArea = new TextArea(2, 30);
+        resultArea.setEditable(false); // Making result area non-editable
+
+        calculateButton = new Button("Calculate Bill");
+
+        // Adding components to the frame
+        add(unitLabel); add(unitField);
+        add(calculateButton); add(resultLabel); add(resultArea);
+
+        // Button event handling to calculate electricity bill
+        calculateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int units = Integer.parseInt(unitField.getText());
+                    double billAmount = 0;
+
+                    if (units <= 100) {
+                        billAmount = units * 2;
+                    } else if (units <= 200) {
+                        billAmount = 100 * 2 + (units - 100) * 3;
+                    } else {
+                        billAmount = 100 * 2 + 100 * 3 + (units - 200) * 5;
+                    }
+
+                    resultArea.setText("Bill: " + billAmount + " INR");
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid units.");
+                }
+            }
+        });
+
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    // Method to show message dialog box
+    void showDialog(String message) {
+        Dialog dialog = new Dialog(this, "Message", true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button ok = new Button("OK");
+        ok.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.setVisible(false);
+            }
+        });
+        dialog.add(ok);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ElectricityBillAWT();
+    }
+}
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class MouseColorChanger extends Frame {
+    Button colorButton;
+
+    public MouseColorChanger() {
+        setTitle("Mouse Color Changer");
+        setLayout(new FlowLayout());
+
+        colorButton = new Button("Hover over me to change color");
+
+        // MouseListener to change button color on mouse hover
+        colorButton.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                colorButton.setBackground(Color.GREEN);
+            }
+
+            public void mouseExited(MouseEvent e) {
+                colorButton.setBackground(Color.RED);
+            }
+        });
+
+        add(colorButton);
+        setSize(400, 200);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new MouseColorChanger();
+    }
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class PowerCalculator extends Frame {
+    Label baseLabel, exponentLabel, resultLabel;
+    TextField baseField, exponentField, resultField;
+    Button calculateButton;
+
+    public PowerCalculator() {
+        setTitle("Power Calculator");
+        setLayout(new FlowLayout());
+
+        baseLabel = new Label("Enter Base: ");
+        exponentLabel = new Label("Enter Exponent: ");
+        resultLabel = new Label("Result: ");
+        
+        baseField = new TextField(10);
+        exponentField = new TextField(10);
+        resultField = new TextField(20);
+        resultField.setEditable(false);
+
+        calculateButton = new Button("Calculate Power");
+
+        add(baseLabel); add(baseField);
+        add(exponentLabel); add(exponentField);
+        add(calculateButton); add(resultLabel); add(resultField);
+
+        calculateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double base = Double.parseDouble(baseField.getText());
+                    int exponent = Integer.parseInt(exponentField.getText());
+                    double result = Math.pow(base, exponent);
+                    resultField.setText(String.valueOf(result));
+                } catch (NumberFormatException ex) {
+                    showDialog("Please enter valid values.");
+                }
+            }
+        });
+
+        setSize(400, 200);
+        setVisible(true);
+    }
+
+    void showDialog(String msg) {
+        Dialog d = new Dialog(this, "Message", true);
+        d.setLayout(new FlowLayout());
+        d.add(new Label(msg));
+        Button ok = new Button("OK");
+        ok.addActionListener(e -> d.setVisible(false));
+        d.add(ok);
+        d.setSize(200, 100);
+        d.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new PowerCalculator();
+    }
+}
+
+

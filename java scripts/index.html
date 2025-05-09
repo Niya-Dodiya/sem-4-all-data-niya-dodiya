@@ -1,0 +1,477 @@
+<!-- AIRITHMETIC,LOGICAL,BITWISE,STRING,TERNATARY,COMPARISION OPERATORS -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let a=10,b=20;
+    
+    //aerithmetic operation
+    console.log("addittion is",a+b);
+    console.log("subtraction is",a-b);
+    console.log("multiplication is",a*b);
+    console.log("division is",a/b);
+    console.log("modulo is",a%b);
+    console.log("expotension is",a**b);
+
+    //boolen values operation compersion operator
+    console.log("a<b is",a<b);
+    console.log("a>b is",a>b);
+    console.log("a==b",a==b);
+    console.log("a!=b",a!=b);
+
+    //logical operation
+    let ismonday=true,isweekend=false;
+
+    console.log("AND (&&)",ismonday&&isweekend);
+    console.log("OR (||)",ismonday||isweekend);
+    console.log("NOT(!)",!ismonday);
+
+    //STRING OPERATION
+
+    let str1='hello';
+    let str2=", world"
+console.log("concate the strings",str1+" "+str2);
+let str3='hi';
+str3+=", how are you.......";
+console.log("adding and assign the value",str3);
+
+//betwise operator
+let x=5,y=1;
+console.log("BITWISE &",x&y);
+console.log("BITWISE |",x|y);
+console.log("BITWISE ^",x^y);
+console.log("BITWISE ~",~y);
+console.log("LEFT SHIFT  <<",x<<1);
+console.log("RIGHT SHIFT >>",x>>1);
+
+//TERNARY OPERATIONS
+
+let age=10;
+let CANVOTE=(age>=18)?"YES":"NO";
+document.writeln(CANVOTE);
+</script>
+<script>
+    document.writeln("HELLO JS");
+</script>
+</html> -->
+
+<!-- FUNCTIONS IN JS -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>WLCOME TO JS BROWSER!.....</h1>
+    <P id="DEMO" style="color: blueviolet;">THIS TEXT WILL BE CHANGE</P>
+    //<button onclick="CHANGETEXT(),CHANGCOLOR()" style="color: aqua;">CLICK ME!</button> 
+    <button onclick="CHANGETEXT()" style="color: aqua;">CLICK ME!</button>
+
+</body>
+<script>
+    function CHANGETEXT(){
+        // document.getElementById("DEMO").style="color=red;";
+        document.getElementById("DEMO").innerHTML="YOU ARE CLICK THE BUTTON";
+        document.getElementById("DEMO").style="color: red;";
+    }
+    // function CHANGCOLOR(){
+    //     // document.getElementById("DEMO").style="color=red;";
+    //     document.getElementById("DEMO").style="color: red;";
+    // }
+</script>
+</html> -->
+<!-- PERAMETER PASS IN THE FUNCTION -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>JAVA SCRIPT FUNCTIONS</h1>
+        <p id="DEMO"></p>
+<script>
+    // MAKE THE RETURN FUNCTION
+
+    document.getElementById("DEMO").innerHTML;
+    
+    function MYFUNCTION(a, b) {
+        return a*b;
+    }
+    const ans = MYFUNCTION(4,3)
+    document.write(`answer is...:${ans}`);
+</script>
+</body>
+
+</html> -->
+
+<!-- OBJECT IN FUNCTION ON JS -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="text"></div>
+<body>
+    <script>
+        const student={
+            name:"abc",
+            rollno:111,
+            div:'b',
+            subject:["maths","physics","sciemce"],
+            address:{
+                street:"GU",
+                city:"ahemdabad",
+                zip:"382300"
+            },
+        };
+        document.getElementById("text").innerHTML=student.name+" "+student.rollno+" "+student.div+" "+student.subject.join(", ")+" "+student.address.street+" "+student.address.city+" "+student.address.zip+" ";
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="text"></div>
+<body>
+    <script>
+        const student={
+            name:"abc",
+            rollno:111,
+            div:'b',
+            subject:["maths","physics","sciemce"],
+            address:{
+                street:"GU",
+                city:"ahemdabad",
+                zip:"382300"
+            },
+        };
+      
+    //with using display function
+    function display() {
+        const displaydata=`
+            <p><strong>NAME:</strong>${student.name}</p>
+            <p><strong>ROLL NO:</strong>${student.div}</p>
+            <p><strong>DIV :</strong>${student.subject.join(",")}</p>
+            <p><strong>SUNJECTS:</strong>${student.name}</p>
+            <p><strong>ADDRESS:</strong>${student.address.street},${student.address.city},${student.address.zip}</p>`;
+            const sd = document.getElementById("text").innerHTML=displaydata;
+    }
+    display();
+</script>
+
+</body>
+</html> -->
+
+<!-- JAVA SCRIPT FUNCTIONS AND METHOD AND SOLVE ASSIGMENT -->
+
+
+<!-- Q-1  -->
+<!-- PROGRAM TO CONVERT FERANHIT TO CELDIUS -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="cel">enter the temprature</label>
+    <input type="number" id="cel" placeholder="enter celcius">
+    <button onclick="convert()">convert</button>
+    <p id="result"></p>
+</body>
+<script>
+    function convert() {
+        let cel=document.getElementById("cel").value;
+        if(cel === ""){
+            document.getElementById("result").innerText="enter valid no";
+            return;
+        }
+        let fer=(parseFloat(cel)*9/5)+32;
+    
+    document.getElementById("result").innerText=`${cel}*C is equal to ${fer.toFixed(2)}*F `
+    }
+</script>
+</html> -->
+
+<!-- Q-2  -->
+<!-- PROGRAM TO REVERSE STRING USING FOR LOOP -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="text"></label>
+    <input type="text" id="text" placeholder="enter the string">
+    <button onclick="reversed()">REVERSE</button>
+    <p id="res"> </p>
+</body>
+<script>
+    function reversed() {
+        let str=document.getElementById("text").value;
+        let rev=text.split("").reverse().join("");
+        // for(let i=str.length-1;i>=0;i++){
+        //     rev+=str[i];
+        // }
+        document.getElementById("res").innerText=`reverse no is ${rev}`;
+    }
+</script>
+</html> -->
+<!-- 
+ q-3 in html   -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <lable >enter the no</lable>
+    <input id="no" type="number"></input>
+    <lable >enter the name</lable>
+    <input id="name" type="text"></input>
+    <lable >enter the no</lable>
+    <input id="salary" type="number"></input>
+    <button onclick="debit()">DEBIT</button>
+    <button onclick="credit()">CREDIT</button>
+    <button onclick="checkbalance()">CHECK BALANCE</button>
+    <p id="result"></p>
+
+</body>
+<script>
+    /*const name=document.getElementById("name").value;
+    const no=document.getElementById("no").value;
+    const salary=document.getElementById("salary").value;
+    function debit(){
+        // let salary=document.getElementById("salary").value;
+        salary-=500;
+        // document.writeln(`salary is${salary}`);
+        let result=document.getElementById("result").innerText=`debit is:${salary}`;
+        
+    }
+    function credit(){
+        // let salary=document.getElementById("salary").value;
+        salary+=500;
+        // document.writeln(`salary is${salary}`);
+        let result=document.getElementById("result").innerText=`debit is:${salary}`;
+    }
+    function credit(){
+        // let salary=document.getElementById("salary").value;
+        // document.writeln(`balance  is${salary}`);
+        let result=document.getElementById("result").innerText=`debit is:${salary}`;
+    }*/
+// class bankac{
+    // const name=document.getElementById("name").value;
+    // const no=document.getElementById("no").value;
+    // const salary=document.getElementById("salary").value;
+    // function debit() {
+    //     // let salary=document.getElementById("salary").value;
+    //     salary-=500;
+    //     // document.writeln(`salary is${salary}`);
+    //     let result=document.getElementById("result").innerText=`debit is:${salary}`;
+        
+    // }
+    // function credit(){
+    //     // let salary=document.getElementById("salary").value;
+    //     salary+=500;
+    //     // document.writeln(`salary is${salary}`);
+    //     let result=document.getElementById("result").innerText=`debit is:${salary}`;
+    // }
+    // function checkbalance(){
+    //     // let salary=document.getElementById("salary").value;
+    //     // document.writeln(`balance  is${salary}`);
+    //     let result=document.getElementById("result").innerText=`debit  
+        
+// --> 
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>-->
+<!-- <body></body> -->
+    <!-- <lable >enter the no</lable>
+    <input id="no" type="number"></input>
+    <br><br>
+    <lable >enter the name</lable>
+    <input id="name" type="text"></input>
+    <br><br>
+    <lable >enter the no</lable>
+    <input id="salary" type="number"></input>
+    <br><br> -->
+    <!-- <button onclick="debit()">DEBIT</button>
+    <button onclick="credit()">CREDIT</button>
+    <button onclick="checkbalance()">CHECK BALANCE</button> 
+    <button onclick="calculate1()">submite</button>
+    <p id="result"></p>
+</body>
+<script>
+    class bankac{
+        constructor(name,no,salary){
+            this.name=name;
+            this.no=no;
+            this.salary=salary;
+        }
+        getdebit(){
+            if(this.salary>0){
+                return this.salary-=500;
+            }
+            else{
+                alert("ENTER VALID SALARY");
+            }
+            
+        }
+        getcredit(){
+            return this.salary+=1500;
+            //return cred;
+        }
+        getcheckbalance(){
+            return this.salary;
+        }
+        getdisplay(){
+            return `NAME OF CLIENT IS:----${this.name} ID IS:---${this.no} SALARY IS:---${this.salary}DEBIT THE SALARY IS:---${this.getdebit()} CREDIT THE SALARY IS${this.getcredit()} CHECK BALANCE:---${this.getcheckbalance()}`;
+        }
+    }
+    function calculate1(){
+    // let name=document.getElementById("name").value;
+    // let no=document.getElementById("no").value;
+    // let salary=document.getElementById("salary").value; 
+    // let c1=new bankac(name,no,salary);
+    let c1=new bankac("niya",101,0);
+    document.getElementById("result").innerText=c1.getdisplay();
+    }
+</script>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>CALCULATE THE AREA</h2>
+    <input id="radius" type="number" placeholder="ENTER THE RADIUS"></input>
+    <button onclick="calculateareaofcircle()">CALCULATE AREA OF CIRCLE</button>
+    <h2>CALCULATE THE AREA OF RETANGLE</h2>
+    <input id="num1" type="number" placeholder="ENTER THE HEIGHT"></input>
+    <input id="num2" type="number" placeholder="ENTER THE WIDTH"></input>
+    <button onclick="calculateareaofretangle()">CALCULATE AREA OF RETANGLE</button>
+    <p id="result"></p>
+    <p id="result1"></p>
+</body>
+<script>
+    function calculateareaofcircle(){
+           let radius=document.getElementById("radius").value;
+           if(radius>0){
+            let area=Math.PI*radius*radius;
+            document.getElementById("result").innerText=`THE AREA OF CIRCLE IS${area}`;
+            
+           }
+           else{
+            alert("ENTER THE VALID RADIUS")
+           }
+    }
+    function calculateareaofretangle(){
+           let num1=document.getElementById("num1").value;
+           let num2=document.getElementById("num2").value;
+           if(num1>0&&num2>0){
+            let area=num1*num2;
+            document.getElementById("result1").innerText=`THE AREA OF RETANGLE IS${area}`;
+           }
+           else{
+            alert("ENTER THE VALID HEIGHT OR WIDTH")
+           }
+    }
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>CALCULATOR</h2>
+    <input id="num1" type="number" placeholder="ENTER THE NUM1"></input>
+    <input id="num2" type="number" placeholder="ENTER THE NUM2"></input>
+    <button onclick="calculator()">CALCULATOR</button>
+    <p id="result"></p>
+</body>
+<script>
+class cal{
+    constructor(num1,num2){
+        this.num1=num1;
+        this.num2=num2;
+    }
+
+    add(){
+        let sum = this.num1+this.num2;
+        return sum;
+    }
+
+    sub(){
+        return this.num1-this.num2;
+    }
+
+    mul(){
+        return this.num1*this.num2;
+    }
+
+    div(){
+        if(num2!=0){
+        return this.num1/this.num2;
+        }
+        else{
+            alert("DEVISION BY 0 IS NOT POSSIBLE")
+        }
+    }
+
+    display(){
+        return `THE NUM1 IS${this.num1} AND NUM2 IS ${this.num2} ADDITION IS ${this.add()} SUBTRACATION IS ${this.sub()} MULTIPLICATION IS ${this.mul()} DIVISION IS ${this.div()}`;
+    }
+}
+function calculator(){
+    let num1=document.getElementById("num1").value;
+    let num2=document.getElementById("num2").value;
+    let e1=new cal(num1,num2);
+    if(!isNaN(num1) && !isNaN(num2)){
+    document.getElementById("result").innerText=e1.display();
+    }
+    else{
+        alert("ENTER THE VALID INPUT")
+    }
+}
+</script>
+</html>
